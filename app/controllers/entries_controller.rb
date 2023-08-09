@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
-    @entries = Entry.all
+    @entries = Entry.where("created_at >= ?", Date.today)
   end
 
   # GET /entries/1 or /entries/1.json
@@ -18,7 +18,6 @@ class EntriesController < ApplicationController
   # GET /entries/1/edit
   def edit
   end
-
   # POST /entries or /entries.json
   def create
     @entry = Entry.new(entry_params)
